@@ -1,0 +1,18 @@
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+    </pattern>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="1" fill="rgba(0,0,0,0.2)"/>
+    </pattern>
+    <pattern id="connections" width="200" height="200" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="200" y2="200" stroke="rgba(0,0,0,0.05)" stroke-width="0.5"/>
+      <line x1="200" y1="0" x2="0" y2="200" stroke="rgba(0,0,0,0.05)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
+  <rect width="100%" height="100%" fill="url(#dots)"/>
+  <rect width="100%" height="100%" fill="url(#connections)"/>
+</svg>
+
