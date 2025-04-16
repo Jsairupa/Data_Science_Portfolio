@@ -8,6 +8,18 @@ export const metadata: Metadata = {
   title: "Sai Rupa Jhade | Data Scientist",
   description:
     "Portfolio of Sai Rupa Jhade, Data Scientist and ML Engineer specializing in Machine Learning, NLP, and AI",
+  openGraph: {
+    title: "Sai Rupa Jhade | Data Scientist",
+    description: "Portfolio showcasing data science and machine learning projects",
+    type: "website",
+    // Remove or comment out the image property to prevent showing your photo
+    // images: [{ url: '/og-image.jpg' }],
+  },
+  twitter: {
+    card: "summary",
+    title: "Sai Rupa Jhade | Data Scientist",
+    description: "Portfolio showcasing data science and machine learning projects",
+  },
     generator: 'v0.dev'
 }
 
@@ -27,7 +39,6 @@ export default function RootLayout({
     </html>
   )
 }
-
 
 
 import './globals.css'

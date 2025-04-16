@@ -59,4 +59,3 @@ export function AnimatedCounter({ value, suffix = "", className = "", duration =
     </span>
   )
 }
-

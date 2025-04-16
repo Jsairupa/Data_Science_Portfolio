@@ -37,4 +37,3 @@ export function SkillBar({ name, value }: SkillBarProps) {
     </div>
   )
 }
-

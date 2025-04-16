@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { generateResponse } from "./chatbot-knowledge"
 
 interface Message {
   role: "user" | "assistant"
@@ -19,24 +20,23 @@ export function ResumeAvatar() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi there! I'm Sai's virtual assistant. Ask me anything about her skills, experience, or projects!",
+      content:
+        "Hi there! I'm Sai's virtual assistant. I can tell you all about her skills, experience, and projects. Feel free to ask me anything!",
     },
   ])
   const [input, setInput] = useState("")
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  // Remove the voice-related state variables
+  // Voice-related state variables
   const [isListening, setIsListening] = useState(false)
   const [speechError, setSpeechError] = useState("")
   const recognitionRef = useRef<any>(null)
 
-  // Remove these voice-related state variables
-  // const [isSpeaking, setIsSpeaking] = useState(false)
-  // const [voiceEnabled, setVoiceEnabled] = useState(true)
-  // const synthRef = useRef<SpeechSynthesis | null>(null)
+  // Add a new state variable for scroll tracking after the other state variables
+  const [scrollPosition, setScrollPosition] = useState(0)
 
-  // Initialize speech recognition and synthesis
+  // Initialize speech recognition
   useEffect(() => {
     // Check if browser supports speech recognition
     if (typeof window !== "undefined") {
@@ -74,11 +74,6 @@ export function ResumeAvatar() {
       } else {
         console.warn("Speech recognition not supported in this browser")
       }
-
-      // Initialize speech synthesis
-      // if (typeof window.speechSynthesis !== 'undefined') {
-      //   synthRef.current = window.speechSynthesis;
-      // }
     }
 
     return () => {
@@ -90,9 +85,6 @@ export function ResumeAvatar() {
           console.error("Error aborting speech recognition:", e)
         }
       }
-      // if (synthRef.current) {
-      //   synthRef.current.cancel();
-      // }
     }
   }, [])
 
@@ -101,133 +93,7 @@ export function ResumeAvatar() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
-  // Resume knowledge base
-  const knowledgeBase = {
-    skills: [
-      "Python",
-      "SQL",
-      "R",
-      "Machine Learning",
-      "Deep Learning",
-      "NLP",
-      "Data Visualization",
-      "Statistical Analysis",
-      "TensorFlow",
-      "PyTorch",
-      "Pandas",
-      "NumPy",
-      "Scikit-learn",
-      "Power BI",
-      "Tableau",
-    ],
-    education: [
-      "Master of Science in Data Science from Rochester Institute of Technology (2023-2025)",
-      "Bachelor of Engineering in Computer Science from Amrita Vishwa Vidyapeetham (2019-2023)",
-    ],
-    experience: [
-      "Data Science Intern at Sree Rayalaseema Hi-Strength Hypo Ltd. (June 2022 – April 2023)",
-      "Designed predictive sales models improving demand accuracy by 15%",
-      "Developed BI dashboards reducing manual reporting by 30%",
-      "Performed customer segmentation boosting conversion rates by 20%",
-    ],
-    projects: [
-      "Political Polarization Analysis using NLP and LLMs",
-      "Virtual Handwriting Smart Board with CNNs (98% accuracy)",
-      "AI-Powered Data Assistant using Streamlit and LangChain",
-    ],
-    certifications: [
-      "IBM Data Science Professional Certificate",
-      "Generative AI Course with Langchain and Huggingface",
-    ],
-    publications: ["Virtual Handwriting Based Smart Board Using Deep Learning (2023, IEEE)"],
-    contact: [
-      "Email: sj7740@rit.edu",
-      "Location: Rochester, NY",
-      "Phone: 585-557-9083",
-      "LinkedIn: linkedin.com/in/sairupajhade",
-      "GitHub: github.com/Jsairupa",
-    ],
-  }
-
-  // Function to generate response based on user input
-  const generateResponse = (userInput: string): string => {
-    const input = userInput.toLowerCase()
-
-    // Check for greetings
-    if (input.match(/hi|hello|hey|greetings/i)) {
-      return "Hello! I'm Sai's virtual assistant. How can I help you today?"
-    }
-
-    // Check for questions about skills
-    if (input.match(/skills|technologies|tools|programming|languages|frameworks|what can you do/i)) {
-      return `Sai is proficient in: ${knowledgeBase.skills.join(", ")}.`
-    }
-
-    // Check for education questions
-    if (input.match(/education|degree|university|college|school|study|studied/i)) {
-      return `Sai's educational background includes: ${knowledgeBase.education.join(". ")}.`
-    }
-
-    // Check for experience questions
-    if (input.match(/experience|work|job|career|intern|internship/i)) {
-      return `Sai's professional experience includes: ${knowledgeBase.experience.join(". ")}.`
-    }
-
-    // Check for project questions
-    if (input.match(/projects|portfolio|work|built|created|developed/i)) {
-      return `Sai has worked on several projects including: ${knowledgeBase.projects.join(". ")}.`
-    }
-
-    // Check for certification questions
-    if (input.match(/certifications|certificates|certified/i)) {
-      return `Sai has earned the following certifications: ${knowledgeBase.certifications.join(", ")}.`
-    }
-
-    // Check for publication questions
-    if (input.match(/publications|published|papers|research/i)) {
-      return `Sai's publications include: ${knowledgeBase.publications.join(", ")}.`
-    }
-
-    // Check for contact information
-    if (input.match(/contact|email|phone|reach|connect|linkedin|github/i)) {
-      return `You can contact Sai through: ${knowledgeBase.contact.join(". ")}.`
-    }
-
-    // Check for questions about machine learning
-    if (input.match(/machine learning|ml|ai|artificial intelligence|deep learning|neural networks/i)) {
-      return "Sai has extensive experience in Machine Learning and AI, including deep learning, NLP, and computer vision. She's worked with TensorFlow, PyTorch, and scikit-learn frameworks to build predictive models and has achieved 98% accuracy in her CNN-based handwriting recognition project."
-    }
-
-    // Check for questions about data visualization
-    if (input.match(/data visualization|visualize|charts|graphs|tableau|power bi/i)) {
-      return "Sai is skilled in data visualization using tools like Tableau, Power BI, Matplotlib, Seaborn, and Plotly. She has experience creating interactive dashboards that reduced manual reporting by 30% in her previous role."
-    }
-
-    // Check for questions about NLP
-    if (input.match(/nlp|natural language processing|text|language|linguistics/i)) {
-      return "Sai has worked extensively with NLP techniques and Large Language Models. Her Political Polarization Analysis project used advanced NLP methods with models like GPT-4o, Llama 3.2, and Mistral AI to analyze sentiment and polarization in text data."
-    }
-
-    // Check for questions about data science process
-    if (input.match(/data science process|methodology|approach|how do you|workflow/i)) {
-      return "Sai follows a comprehensive data science approach that includes problem definition, data collection, preprocessing, exploratory analysis, feature engineering, model development, evaluation, and deployment. She emphasizes the importance of understanding business requirements and communicating insights effectively."
-    }
-
-    // Check for questions about availability
-    if (input.match(/available|hire|hiring|job|opportunity|looking for work/i)) {
-      return "Sai is currently open to new opportunities and collaborations in data science and machine learning. Feel free to reach out to her at sj7740@rit.edu to discuss potential roles or projects."
-    }
-
-    // Check for voice assistant questions
-    if (input.match(/voice|speak|talk|listen|speech/i)) {
-      return "Yes, I can speak and listen! Click the microphone button to speak your question, and I'll respond with voice as well. You can toggle voice features on or off using the speaker button."
-    }
-
-    // Default response for unrecognized questions
-    return "I don't have specific information about that. Would you like to know about Sai's skills, education, experience, projects, or contact information?"
-  }
-
-  // In the handleSendMessage function, remove the voice response part:
+  // Handle sending messages
   const handleSendMessage = (text?: string) => {
     const messageText = text || input
     if (!messageText.trim()) return
@@ -240,16 +106,118 @@ export function ResumeAvatar() {
     // Show typing indicator
     setIsTyping(true)
 
-    // Simulate AI thinking and typing
-    setTimeout(
-      () => {
-        const response = generateResponse(messageText)
-        const assistantMessage: Message = { role: "assistant", content: response }
+    // First layer of detection for specific data requests
+    const lowerCaseMessage = messageText.toLowerCase().trim()
+
+    // Direct pattern matching for highest priority items
+    let directResponse: string | null = null
+
+    // Phone number detection
+    if (
+      /^(phone|number|phone number|cell|mobile|telephone)(\?)?$/i.test(lowerCaseMessage) ||
+      /^what('s| is) (her|the) (phone|number|phone number|cell|mobile|telephone)(\?)?$/i.test(lowerCaseMessage) ||
+      /^(can i have|give me|tell me) (her|the) (phone|number|phone number|cell|mobile|telephone)(\?)?$/i.test(
+        lowerCaseMessage,
+      )
+    ) {
+      directResponse = "585-557-9083"
+    }
+
+    // Email detection
+    else if (
+      /^(email|e-mail|mail|email address)(\?)?$/i.test(lowerCaseMessage) ||
+      /^what('s| is) (her|the) (email|e-mail|mail|email address)(\?)?$/i.test(lowerCaseMessage) ||
+      /^(can i have|give me|tell me) (her|the) (email|e-mail|mail|email address)(\?)?$/i.test(lowerCaseMessage)
+    ) {
+      directResponse = "sj7740@rit.edu"
+    }
+
+    // LinkedIn detection
+    else if (
+      /^(linkedin|linked in)(\?)?$/i.test(lowerCaseMessage) ||
+      /^what('s| is) (her|the) (linkedin|linked in)(\?)?$/i.test(lowerCaseMessage) ||
+      /^(can i have|give me|tell me) (her|the) (linkedin|linked in)(\?)?$/i.test(lowerCaseMessage)
+    ) {
+      directResponse = "linkedin.com/in/sairupajhade"
+    }
+
+    // GitHub detection
+    else if (
+      /^(github|git)(\?)?$/i.test(lowerCaseMessage) ||
+      /^what('s| is) (her|the) (github|git)(\?)?$/i.test(lowerCaseMessage) ||
+      /^(can i have|give me|tell me) (her|the) (github|git)(\?)?$/i.test(lowerCaseMessage)
+    ) {
+      directResponse = "github.com/Jsairupa"
+    }
+
+    // Location detection
+    else if (
+      /^(location|address|where)(\?)?$/i.test(lowerCaseMessage) ||
+      /^where (is she|does she live|is she located|is she based)(\?)?$/i.test(lowerCaseMessage) ||
+      /^what('s| is) (her|the) (location|address)(\?)?$/i.test(lowerCaseMessage)
+    ) {
+      directResponse = "Rochester, NY"
+    }
+
+    // GPA detection
+    else if (
+      /^(gpa|grade point average)(\?)?$/i.test(lowerCaseMessage) ||
+      /^what('s| is) (her|the) (gpa|grade point average)(\?)?$/i.test(lowerCaseMessage)
+    ) {
+      directResponse = "3.49/4.0"
+    }
+
+    // University detection
+    else if (
+      /^(university|college|school)(\?)?$/i.test(lowerCaseMessage) ||
+      /^where (did|does) she (study|go to school)(\?)?$/i.test(lowerCaseMessage) ||
+      /^what (university|college|school) (did|does) she (attend|go to)(\?)?$/i.test(lowerCaseMessage)
+    ) {
+      directResponse = "Rochester Institute of Technology"
+    }
+
+    // Job title detection
+    else if (
+      /^(job title|position|role)(\?)?$/i.test(lowerCaseMessage) ||
+      /^what('s| is| was) (her|the) (job title|position|role)(\?)?$/i.test(lowerCaseMessage)
+    ) {
+      directResponse = "Data Science Intern"
+    }
+
+    // Company detection
+    else if (
+      /^(company|employer|organization)(\?)?$/i.test(lowerCaseMessage) ||
+      /^where (did|does) she work(\?)?$/i.test(lowerCaseMessage) ||
+      /^what company (did|does) she work (at|for)(\?)?$/i.test(lowerCaseMessage)
+    ) {
+      directResponse = "Sree Rayalaseema Hi-Strength Hypo Ltd."
+    }
+
+    // If we have a direct response, use it
+    if (directResponse) {
+      setTimeout(() => {
+        const assistantMessage: Message = { role: "assistant", content: directResponse! }
         setMessages((prev) => [...prev, assistantMessage])
         setIsTyping(false)
-      },
-      1000 + Math.random() * 1000,
-    ) // Random delay between 1-2 seconds
+      }, 500)
+    }
+    // Otherwise, use the knowledge base
+    else {
+      setTimeout(
+        () => {
+          const response = generateResponse(messageText)
+          const assistantMessage: Message = { role: "assistant", content: response }
+          setMessages((prev) => [...prev, assistantMessage])
+          setIsTyping(false)
+        },
+        500 + Math.random() * 500, // Random delay between 0.5-1 seconds
+      )
+    }
+  }
+
+  // Update the minimizeChat function to support scrolling minimization
+  const minimizeChat = () => {
+    setIsMinimized(true)
   }
 
   const toggleChat = () => {
@@ -260,9 +228,18 @@ export function ResumeAvatar() {
     }
   }
 
-  const minimizeChat = () => {
-    setIsMinimized(true)
-  }
+  // Add this useEffect to track scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
 
   // Voice assistant functions
   const toggleListening = () => {
@@ -280,11 +257,6 @@ export function ResumeAvatar() {
     }
 
     try {
-      // Cancel any ongoing speech synthesis
-      // if (synthRef.current) {
-      //   synthRef.current.cancel();
-      // }
-
       // Clear any previous errors
       setSpeechError("")
 
@@ -319,46 +291,26 @@ export function ResumeAvatar() {
     setIsListening(false)
   }
 
-  // const toggleVoice = () => {
-  //   setVoiceEnabled(!voiceEnabled)
+  // Add a welcome message when the chat is opened
+  useEffect(() => {
+    if (isOpen && messages.length === 1) {
+      // Show typing indicator
+      setIsTyping(true)
 
-  //   // Stop speaking if turning off voice
-  //   if (voiceEnabled && synthRef.current) {
-  //     synthRef.current.cancel()
-  //     setIsSpeaking(false)
-  //   }
-  // }
-
-  // const speakText = (text: string) => {
-  //   if (!synthRef.current) return
-
-  //   // Cancel any ongoing speech
-  //   synthRef.current.cancel()
-
-  //   const utterance = new SpeechSynthesisUtterance(text)
-  //   utterance.rate = 1.0
-  //   utterance.pitch = 1.0
-  //   utterance.volume = 1.0
-
-  //   // Use a female voice if available
-  //   const voices = synthRef.current.getVoices()
-  //   const femaleVoice = voices.find(
-  //     (voice) =>
-  //       voice.name.includes("female") ||
-  //       voice.name.includes("Samantha") ||
-  //       voice.name.includes("Google UK English Female"),
-  //   )
-
-  //   if (femaleVoice) {
-  //     utterance.voice = femaleVoice
-  //   }
-
-  //   utterance.onstart = () => setIsSpeaking(true)
-  //   utterance.onend = () => setIsSpeaking(false)
-  //   utterance.onerror = () => setIsSpeaking(false)
-
-  //   synthRef.current.speak(utterance)
-  // }
+      // Add welcome message after a short delay
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "assistant",
+            content:
+              "I'd be happy to chat about Sai's background! You can ask me things like 'What's her professional experience?', 'What projects has she worked on?', or 'Tell me about her education.' What would you like to know?",
+          },
+        ])
+        setIsTyping(false)
+      }, 1000)
+    }
+  }, [isOpen])
 
   return (
     <>
@@ -390,10 +342,14 @@ export function ResumeAvatar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-6 right-6 z-50 w-80 md:w-96"
+            className="fixed z-50 w-80 md:w-96"
+            style={{
+              bottom: isMinimized ? "0" : "1.5rem",
+              right: "1.5rem",
+              transform: isMinimized ? `translateY(${Math.min(80, scrollPosition)}px)` : "none",
+            }}
           >
             <Card className="border-primary/20 shadow-xl">
-              {/* In the CardHeader, remove the voice toggle button and speaking indicator: */}
               <CardHeader className="bg-gradient-to-r from-primary to-purple-500 text-white p-3 flex flex-row justify-between items-center">
                 <div className="flex items-center gap-2">
                   <Avatar className="h-8 w-8 border-2 border-white">
@@ -406,32 +362,38 @@ export function ResumeAvatar() {
                 </div>
                 <div className="flex gap-1">
                   {isMinimized ? (
-                    <Button
-                      variant="ghost"
-                      size="icon"
+                    <div
+                      className="bg-gradient-to-r from-primary/90 to-purple-500/90 text-white p-2 rounded-b-lg cursor-pointer flex items-center justify-between"
                       onClick={() => setIsMinimized(false)}
-                      className="h-6 w-6 text-white hover:bg-white/20"
                     >
+                      <div className="flex items-center">
+                        <Avatar className="h-6 w-6 mr-2">
+                          <AvatarFallback>AI</AvatarFallback>
+                        </Avatar>
+                        <span className="text-xs font-medium">Resume Assistant</span>
+                      </div>
                       <Maximize2 className="h-4 w-4" />
-                    </Button>
+                    </div>
                   ) : (
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={minimizeChat}
-                      className="h-6 w-6 text-white hover:bg-white/20"
-                    >
-                      <Minimize2 className="h-4 w-4" />
-                    </Button>
+                    <>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={minimizeChat}
+                        className="h-6 w-6 text-white hover:bg-white/20"
+                      >
+                        <Minimize2 className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setIsOpen(false)}
+                        className="h-6 w-6 text-white hover:bg-white/20"
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
+                    </>
                   )}
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setIsOpen(false)}
-                    className="h-6 w-6 text-white hover:bg-white/20"
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
                 </div>
               </CardHeader>
 
@@ -528,4 +490,3 @@ export function ResumeAvatar() {
     </>
   )
 }
-

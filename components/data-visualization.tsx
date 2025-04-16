@@ -92,4 +92,3 @@ export function DataVisualization() {
 
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 }
-

@@ -64,7 +64,7 @@ export function DataWhirlAnimation() {
         "Formulated a CNN-based virtual handwriting recognition system using TensorFlow and OpenCV, achieving 98% accuracy and reducing latency by 30% for real-time performance.",
       image: "/images/virtual-handwriting.png",
       tags: ["Python", "TensorFlow", "OpenCV", "CNNs"],
-      link: "https://github.com/yourusername/virtual-handwriting",
+      link: "https://app-virtual-handwriting-smart-board-huzktba7objccknqrybkf9.streamlit.app/",
       buttonText: "✍️ Try Handwriting Recognition",
       icon: <ChartBar className="h-4 w-4" />,
     },
@@ -472,4 +472,3 @@ export function DataWhirlAnimation() {
     </div>
   )
 }
-

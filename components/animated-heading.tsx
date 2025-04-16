@@ -39,4 +39,3 @@ export function AnimatedHeading({ children, className }: AnimatedHeadingProps) {
     </motion.div>
   )
 }
-

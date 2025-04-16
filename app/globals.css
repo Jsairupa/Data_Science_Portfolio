@@ -34,6 +34,26 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Ensure text doesn't overflow containers */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  a {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
 }
 
 html {
@@ -43,6 +63,127 @@ html {
 /* Make sure canvas is visible */
 canvas {
   display: block;
+}
+
+/* Timeline section styles */
+.timeline-section h2 {
+  @apply text-3xl font-bold mb-4;
+}
+
+.timeline-section-subtitle {
+  @apply text-muted-foreground mb-8;
+}
+
+/* Enhanced project card styling */
+.project-card-image {
+  position: relative;
+  height: 280px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Special styling for specific project cards */
+.project-card-image.political-polarization,
+.project-card-image.ai-data-assistant,
+.project-card-image.socio-economic-cancer {
+  height: 320px;
+}
+
+.project-card-image img {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Custom object positions for specific projects */
+.project-card-image.political-polarization img {
+  object-position: center 20%;
+}
+
+.project-card-image.ai-data-assistant img {
+  object-position: center 15%;
+}
+
+.project-card-image.socio-economic-cancer img {
+  object-position: center 10%;
+}
+
+.project-card-image:hover img {
+  transform: scale(1.03);
+}
+
+.project-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 100%);
+}
+
+/* Stronger overlay for specific projects */
+.project-card-overlay.enhanced {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0.2) 80%,
+    transparent 100%
+  );
+}
+
+.project-card-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  z-index: 20;
+}
+
+/* Larger title for specific projects */
+.project-card-title.enhanced {
+  font-size: 1.5rem;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+  padding-bottom: 2rem;
+}
+
+.project-card-content {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-card-description {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.project-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-card-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: rgba(var(--primary), 0.1);
+  color: hsl(var(--primary));
+  transition: background-color 0.2s;
+}
+
+.project-card-tag:hover {
+  background-color: rgba(var(--primary), 0.2);
 }
 
 @keyframes fade-in {
@@ -65,6 +206,20 @@ canvas {
   }
 }
 
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1.5s infinite;
+}
+
 .animate-fade-in {
   animation: fade-in 1s ease forwards;
 }
@@ -77,3 +232,31 @@ canvas {
   animation-delay: 300ms;
 }
 
+/* Add these styles to your globals.css file */
+@layer utilities {
+  .blog-card-shadow {
+    box-shadow: 0 4px 20px -5px rgba(var(--primary), 0.2);
+  }
+
+  .blog-card-shadow:hover {
+    box-shadow: 0 8px 30px -5px rgba(var(--primary), 0.3);
+  }
+
+  .blog-image-gradient {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.1) 100%);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}

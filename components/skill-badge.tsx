@@ -19,4 +19,3 @@ export function SkillBadge({ name, level }: SkillBadgeProps) {
     </Badge>
   )
 }
-

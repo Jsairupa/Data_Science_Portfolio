@@ -151,4 +151,3 @@ export function DataVisualization3D() {
 
   return <div ref={containerRef} className="w-full h-full" />
 }
-

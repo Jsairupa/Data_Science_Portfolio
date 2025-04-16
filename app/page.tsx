@@ -2,22 +2,24 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Eye, MapPin } from "lucide-react"
+import { ArrowRight, Eye, GraduationCap, Briefcase } from "lucide-react"
 import { useEffect } from "react"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { AnimatedHeading } from "@/components/animated-heading"
 import { GsapBackground } from "@/components/gsap-background"
 import { TimelineItem } from "@/components/timeline-item"
+import { TimelineSection } from "@/components/timeline-section"
 import { AnimatedCounter } from "@/components/animated-counter"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { ProjectCard } from "@/components/project-card"
 import { SkillsGrid } from "@/components/skills-grid"
 import { ResumeAvatar } from "@/components/resume-avatar"
+import { BlogPostCard } from "@/components/blog-post-card"
+import { TypingAnimation } from "@/components/typing-animation"
 
 export default function Home() {
   // Add this useEffect for smooth scrolling with header offset
@@ -131,14 +133,17 @@ export default function Home() {
             <Link href="#skills" className="text-sm font-medium hover:text-primary transition-colors">
               Skills
             </Link>
+            <Link href="#education" className="text-sm font-medium hover:text-primary transition-colors">
+              Education
+            </Link>
             <Link href="#experience" className="text-sm font-medium hover:text-primary transition-colors">
               Experience
             </Link>
-            <Link href="#certifications" className="text-sm font-medium hover:text-primary transition-colors">
-              Certifications
-            </Link>
             <Link href="#projects" className="text-sm font-medium hover:text-primary transition-colors">
               Projects
+            </Link>
+            <Link href="#blog" className="text-sm font-medium hover:text-primary transition-colors">
+              Blog
             </Link>
             <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
               Contact
@@ -186,6 +191,13 @@ export default function Home() {
                   Skills
                 </Link>
                 <Link
+                  href="#education"
+                  className="text-sm font-medium hover:text-primary transition-colors px-2 py-2 rounded-md hover:bg-muted"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Education
+                </Link>
+                <Link
                   href="#experience"
                   className="text-sm font-medium hover:text-primary transition-colors px-2 py-2 rounded-md hover:bg-muted"
                   onClick={() => setMobileMenuOpen(false)}
@@ -193,18 +205,18 @@ export default function Home() {
                   Experience
                 </Link>
                 <Link
-                  href="#certifications"
-                  className="text-sm font-medium hover:text-primary transition-colors px-2 py-2 rounded-md hover:bg-muted"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Certifications
-                </Link>
-                <Link
                   href="#projects"
                   className="text-sm font-medium hover:text-primary transition-colors px-2 py-2 rounded-md hover:bg-muted"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Projects
+                </Link>
+                <Link
+                  href="#blog"
+                  className="text-sm font-medium hover:text-primary transition-colors px-2 py-2 rounded-md hover:bg-muted"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Blog
                 </Link>
                 <Link
                   href="#contact"
@@ -240,9 +252,17 @@ export default function Home() {
                   </span>
                 </h1>
               </AnimatedHeading>
-              <p className="text-xl text-muted-foreground animate-fade-in">
-                Transforming complex data into actionable insights through machine learning and AI.
-              </p>
+              <TypingAnimation
+                phrases={[
+                  "Data Scientist | AI & ML Enthusiast | NLP & Predictive Analytics",
+                  "Transforming data into decisions with science and code",
+                  "Building intelligent systems that make an impact",
+                ]}
+                className="text-xl text-muted-foreground"
+                typingSpeed={70}
+                deletingSpeed={30}
+                delayBetweenPhrases={3000}
+              />
               <div className="flex flex-col sm:flex-row gap-3 animate-fade-in-up">
                 <Button
                   size="lg"
@@ -302,8 +322,8 @@ export default function Home() {
               <Card className="bg-background/50 backdrop-blur border-primary/20 hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
                 <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-primary to-purple-500"></div>
                 <CardContent className="p-6 text-center">
-                  <AnimatedCounter value={15} suffix="%" className="text-3xl font-bold text-primary" />
-                  <p className="text-sm text-muted-foreground mt-2">Forecast Accuracy Improvement</p>
+                  <AnimatedCounter value={3} className="text-3xl font-bold text-primary" />
+                  <p className="text-sm text-muted-foreground mt-2">Conversational AI Projects</p>
                 </CardContent>
               </Card>
               <Card className="bg-background/50 backdrop-blur border-primary/20 hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
@@ -342,37 +362,20 @@ export default function Home() {
                     <h2 className="text-3xl font-bold">About Me</h2>
                   </AnimatedHeading>
                   <p className="text-muted-foreground">
-                    I'm a Data Science graduate student at Rochester Institute of Technology with a passion for machine
-                    learning, statistical analysis, and data visualization. With a background in Computer Science and
-                    Engineering from Amrita Vishwa Vidyapeetham, I approach data problems with both technical expertise
-                    and creative thinking.
+                    I'm a Data Science graduate student at RIT with a deep curiosity for how machines learn and how data
+                    can be transformed into intelligent action. My foundation in Computer Science from Amrita Vishwa
+                    Vidyapeetham helps me approach problems with both logic and creativity.
                   </p>
                   <p className="text-muted-foreground">
-                    My research interests include natural language processing, deep learning, and conversational AI. I'm
-                    currently focused on developing advanced machine learning models for political data analysis and
-                    exploring the applications of Large Language Models.
+                    I'm not just fascinated by models, I'm driven to build them. My interests span across natural
+                    language processing, conversational AI, and applied machine learning, where I love translating raw
+                    datasets into real, working systems.
                   </p>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <MapPin className="h-4 w-4 text-primary" />
-                    <span>Rochester, NY</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    <Badge variant="outline" className="bg-primary/10 hover:bg-primary/20 transition-colors">
-                      Data Science
-                    </Badge>
-                    <Badge variant="outline" className="bg-primary/10 hover:bg-primary/20 transition-colors">
-                      Machine Learning
-                    </Badge>
-                    <Badge variant="outline" className="bg-primary/10 hover:bg-primary/20 transition-colors">
-                      NLP
-                    </Badge>
-                    <Badge variant="outline" className="bg-primary/10 hover:bg-primary/20 transition-colors">
-                      Deep Learning
-                    </Badge>
-                    <Badge variant="outline" className="bg-primary/10 hover:bg-primary/20 transition-colors">
-                      Conversational AI
-                    </Badge>
-                  </div>
+                  <p className="text-muted-foreground">
+                    Whether it's building an LLM-powered assistant or extracting insight from unstructured text, I care
+                    about one thing: creating data-driven solutions that actually make an impact. I'm still learning but
+                    I'm learning fast, and building as I go.
+                  </p>
                 </div>
               </div>
             </ScrollReveal>
@@ -388,102 +391,208 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Education Section */}
+        <TimelineSection
+          id="education"
+          title="Education"
+          description="My academic journey in the field of data science and computer science."
+          icon={<GraduationCap size={24} />}
+        >
+          <ScrollReveal>
+            <TimelineItem
+              title="Master of Science in Data Science"
+              organization="Rochester Institute of Technology"
+              period="Aug 2023 – Dec 2025"
+              location="Rochester, NY"
+              description="GPA: 3.49/4.0. Courses: Applied Statistics, Foundation of Data Science, Database Design Implementation, Data Warehousing, Applied Data Science, Advanced Political Data Science, Cloud Computing and Big Data Analytics."
+              icon={<GraduationCap size={18} />}
+            />
+          </ScrollReveal>
+          <ScrollReveal>
+            <TimelineItem
+              title="Bachelor of Engineering, Computer Science and Engineering"
+              organization="Amrita Vishwa Vidyapeetham"
+              period="Aug 2019 – May 2023"
+              location="Coimbatore, India"
+              description="GPA: 8.23/10.0. Focused on Computer Science Fundamentals, Data Structures & Algorithms and Machine Learning."
+              icon={<GraduationCap size={18} />}
+            />
+          </ScrollReveal>
+        </TimelineSection>
+
         {/* Experience Section */}
-        <section id="experience" className="py-20 md:py-28 backdrop-blur-sm">
+        <TimelineSection
+          id="experience"
+          title="Experience"
+          description="My professional experience in data science and technology."
+          icon={<Briefcase size={24} />}
+        >
+          <ScrollReveal>
+            <TimelineItem
+              title="Data Science Intern"
+              organization="Sree Rayalaseema Hi-Strength Hypo Ltd. (SRHHL)"
+              period="June 2022 – April 2023"
+              location="Hyderabad, India"
+              description={[
+                "Designed and deployed predictive sales models using ARIMA, XGBoost, and Prophet, improving demand accuracy by 15% and optimizing supply chain forecasting to reduce stockouts.",
+                "Developed interactive business intelligence dashboards (Tableau, Power BI) to monitor real-time sales performance, cutting manual reporting by 30% and enabling faster decision-making.",
+                "Performed customer segmentation using K-Means clustering and DBSCAN, enabling targeted marketing campaigns, which boosted conversion rates by 20% and optimized pricing strategies, leading to a 5% increase in revenue.",
+              ]}
+              icon={<Briefcase size={18} />}
+            />
+          </ScrollReveal>
+          <ScrollReveal>
+            <TimelineItem
+              title="Technical Operations Assistant"
+              organization="Rochester Institute of Technology"
+              period="May 2024 – Present"
+              location="Rochester, NY"
+              description={[
+                "Delivered technical support for over 100 campus-wide IT systems, resolving hardware, software, and network issues with a 95% success rate, ensuring smooth operations.",
+                "Facilitated the deployment and configuration of 10+ software applications, improving system performance by 20% and reducing response time by 15%.",
+                "Collaborated with faculty, staff to address technical issues, managing hardware and software configurations to reduce resolution time by 45% and improve user satisfaction and operational uptime.",
+              ]}
+              icon={<Briefcase size={18} />}
+            />
+          </ScrollReveal>
+        </TimelineSection>
+
+        {/* Projects Section */}
+        <section id="projects" className="py-20 md:py-28 backdrop-blur-sm">
           <div className="container">
             <ScrollReveal>
               <AnimatedHeading className="text-center">
-                <h2 className="text-3xl font-bold mb-2">Education & Experience</h2>
+                <h2 className="text-3xl font-bold mb-2">Featured Projects</h2>
               </AnimatedHeading>
               <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-                My academic journey and professional experience in the field of data science.
+                A selection of my data science projects, showcasing my skills in machine learning, data analysis, and AI
+                applications.
               </p>
             </ScrollReveal>
 
-            <div className="grid gap-8 md:grid-cols-2">
-              <div className="space-y-8">
-                <ScrollReveal>
-                  <h3 className="text-xl font-bold mb-6 flex items-center">
-                    <span className="bg-primary/20 text-primary p-2 rounded-md mr-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-graduation-cap"
-                      >
-                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                        <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
-                      </svg>
-                    </span>
-                    Education
-                  </h3>
-                </ScrollReveal>
+            <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+              <ScrollReveal>
+                <ProjectCard
+                  id="political-polarization"
+                  title="Political Polarization Analysis"
+                  description="Applied advanced NLP techniques and Large Language Models (GPT-4o, Llama 3.2, Mistral AI) to analyze political polarization in YouTube news comments."
+                  image="/images/political-polarization.png"
+                  tags={["Python", "NLP", "VADER", "RoBERTa", "YouTube API"]}
+                />
+              </ScrollReveal>
 
-                <ScrollReveal>
-                  <TimelineItem
-                    title="Master of Science in Data Science"
-                    organization="Rochester Institute of Technology"
-                    period="Aug 2023 – Dec 2025"
-                    location="Rochester, NY"
-                    description="GPA: 3.49/4.0. Courses: Applied Statistics, Foundation of Data Science, Database Design Implementation, Data Warehousing, Applied Data Science, Advanced Political Data Science, Cloud Computing, Big Data Analytics."
-                  />
-                </ScrollReveal>
+              <ScrollReveal>
+                <ProjectCard
+                  id="virtual-handwriting"
+                  title="Virtual Handwriting Smart Board"
+                  description="Formulated a CNN-based virtual handwriting recognition system using TensorFlow and OpenCV, achieving 98% accuracy and reducing latency by 30% for real-time performance."
+                  image="/images/virtual-handwriting.png"
+                  tags={["Python", "TensorFlow", "OpenCV", "CNNs"]}
+                />
+              </ScrollReveal>
 
-                <ScrollReveal>
-                  <TimelineItem
-                    title="Bachelor of Engineering, Computer Science and Engineering"
-                    organization="Amrita Vishwa Vidyapeetham"
-                    period="Aug 2019 – May 2023"
-                    location="Coimbatore, India"
-                    description="GPA: 8.23/10.0. Focused on computer science fundamentals, data structures, algorithms, and machine learning."
-                  />
-                </ScrollReveal>
-              </div>
+              <ScrollReveal>
+                <ProjectCard
+                  id="ai-data-assistant"
+                  title="AI-Powered Data Assistant"
+                  description="Built a Streamlit app that analyzes user-uploaded CSVs and uses LLMs to auto-generate Python code for data cleaning, EDA, and model building with clear, step-by-step explanations."
+                  image="/images/ai-data-assistant.png"
+                  tags={["Streamlit", "OpenAI", "LangChain", "Ollama", "Pandas"]}
+                />
+              </ScrollReveal>
 
-              <div className="space-y-8">
-                <ScrollReveal>
-                  <h3 className="text-xl font-bold mb-6 flex items-center">
-                    <span className="bg-primary/20 text-primary p-2 rounded-md mr-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-briefcase"
-                      >
-                        <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
-                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                      </svg>
-                    </span>
-                    Experience
-                  </h3>
-                </ScrollReveal>
+              <ScrollReveal>
+                <ProjectCard
+                  id="credit-card-fraud"
+                  title="Credit Card Fraud Detection"
+                  description="Developed ML solution for detecting fraudulent transactions in an imbalanced dataset. Improved model accuracy by 15% through data preprocessing and achieved an F1-Score of 0.92 with 20% reduction in false positives."
+                  image="/images/credit-card-fraud.png"
+                  tags={["Python", "Machine Learning", "Random Forest", "Neural Networks", "Snap ML"]}
+                />
+              </ScrollReveal>
 
-                <ScrollReveal>
-                  <TimelineItem
-                    title="Data Science Intern"
-                    organization="Sree Rayalaseema Hi-Strength Hypo Ltd. (SRHHL)"
-                    period="June 2022 – April 2023"
-                    location="Hyderabad, India"
-                    description={[
-                      "Designed and deployed predictive sales models using ARIMA, XGBoost, and Prophet, improving demand accuracy by 15% and optimizing supply chain forecasting to reduce stockouts.",
-                      "Developed interactive business intelligence dashboards (Tableau, Power BI) to monitor real-time sales performance, cutting manual reporting by 30% and enabling faster decision-making.",
-                      "Performed customer segmentation using K-Means clustering and DBSCAN, enabling targeted marketing campaigns, which boosted conversion rates by 20% and optimized pricing strategies, leading to a 5% increase in revenue.",
-                    ]}
-                  />
-                </ScrollReveal>
-              </div>
+              <ScrollReveal>
+                <ProjectCard
+                  id="socio-economic-cancer"
+                  title="Socio-Economic Factors & Cancer Rates"
+                  description="Analyzed correlations between income, poverty, and cancer incidence/mortality in U.S. counties. Revealed regional disparities and suggested targeted interventions for high-risk areas."
+                  image="/images/socio-economic-cancer.png"
+                  tags={["Data Science", "Tableau", "R", "Statistical Analysis"]}
+                />
+              </ScrollReveal>
+
+              <ScrollReveal>
+                <ProjectCard
+                  id="housing-data-ames"
+                  title="Housing Data Analysis in Ames, Iowa"
+                  description="Analyzed 1,460 homes to identify factors affecting house prices using T-tests, ANOVA, and linear regression. Found significant price impacts from central air conditioning and neighborhood tiers."
+                  image="/images/housing-data-ames.png"
+                  tags={["Regression Analysis", "JMP", "ANOVA", "Hypothesis Testing"]}
+                />
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
+
+        {/* Blog Section */}
+        <section id="blog" className="py-20 md:py-28 bg-muted/30 backdrop-blur-sm">
+          <div className="container">
+            <ScrollReveal>
+              <AnimatedHeading className="text-center">
+                <h2 className="text-3xl font-bold mb-2">Latest Blog Posts</h2>
+              </AnimatedHeading>
+              <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+                Thoughts, insights, and tutorials on data science, machine learning, and AI from my Medium blog.
+              </p>
+            </ScrollReveal>
+
+            <div className="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
+              <ScrollReveal>
+                <BlogPostCard
+                  title="Understanding the RAG Process: What Happens Behind the Scenes?"
+                  excerpt="Dive into the mechanics of Retrieval Augmented Generation (RAG) and learn how it enables LLMs to access and reason with external knowledge beyond their training data."
+                  image="https://sjc.microlink.io/OwHi2uFlAcE309mMYkNAL04SEx9EYcRetixb1xOXi-YMDuLAhE5g6vGzI2i8VWVFJW42dJHCkZhJdKVDukng-g.jpeg"
+                  date="Apr 10, 2024"
+                  readTime="7 min read"
+                  tags={["RAG", "LangChain", "LLM", "Vector Database", "Embeddings"]}
+                  link="https://medium.com/@jsairupa/understanding-the-rag-process-what-happens-behind-the-scenes-e36bd6a90293"
+                />
+              </ScrollReveal>
+
+              <ScrollReveal>
+                <BlogPostCard
+                  title="Your First LangChain App: Build a Simple Q&A Bot in Python"
+                  excerpt="A step-by-step guide to building your first Q&A chatbot using LangChain and Python, perfect for beginners looking to get started with LLM application development."
+                  image="/images/qa-bot-python.png"
+                  date="Apr 4, 2024"
+                  readTime="4 min read"
+                  tags={["LangChain", "Python", "Chatbot", "LLM", "Tutorial"]}
+                  link="https://medium.com/@jsairupa/your-first-langchain-app-build-a-simple-q-a-bot-in-python-3c03fe762ee6"
+                />
+              </ScrollReveal>
+
+              <ScrollReveal>
+                <BlogPostCard
+                  title="What is LangChain and Why Should Beginners Care?"
+                  excerpt="A beginner-friendly introduction to LangChain, explaining what it is, why it matters, and how it can help you build powerful AI applications with less effort."
+                  image="https://sjc.microlink.io/a6Xp3mW9fKDpVp61QEJCeXavrdyr0ygEbxSNYEnhAN96MZG9bZts0CsgCm48Qnh-RHSE4dQbTzNNzNVh2-NidQ.jpeg"
+                  date="Apr 1, 2024"
+                  readTime="3 min read"
+                  tags={["LangChain", "AI", "Python", "Beginners", "LLMs"]}
+                  link="https://medium.com/@jsairupa/what-is-langchain-and-why-should-beginners-care-ab2971a8ccaf"
+                />
+              </ScrollReveal>
+            </div>
+
+            <div className="mt-12 text-center">
+              <Button
+                asChild
+                className="bg-gradient-to-r from-primary to-blue-500 hover:from-primary/90 hover:to-blue-400 text-white"
+              >
+                <a href="https://medium.com/@jsairupa" target="_blank" rel="noopener noreferrer">
+                  View All Blog Posts
+                </a>
+              </Button>
             </div>
           </div>
         </section>
@@ -674,77 +783,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Projects Section */}
-        <section id="projects" className="py-20 md:py-28 backdrop-blur-sm">
-          <div className="container">
-            <ScrollReveal>
-              <AnimatedHeading className="text-center">
-                <h2 className="text-3xl font-bold mb-2">Featured Projects</h2>
-              </AnimatedHeading>
-              <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-                A selection of my data science projects, showcasing my skills in machine learning, data analysis, and AI
-                applications.
-              </p>
-            </ScrollReveal>
-
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              <ScrollReveal>
-                <ProjectCard
-                  title="Political Polarization Analysis"
-                  description="Applied advanced NLP techniques and Large Language Models (GPT-4o, Llama 3.2, Mistral AI) to analyze political polarization in YouTube news comments."
-                  image="/images/political-polarization.png"
-                  tags={["Python", "NLP", "VADER", "RoBERTa", "YouTube API"]}
-                />
-              </ScrollReveal>
-
-              <ScrollReveal>
-                <ProjectCard
-                  title="Virtual Handwriting Smart Board"
-                  description="Formulated a CNN-based virtual handwriting recognition system using TensorFlow and OpenCV, achieving 98% accuracy and reducing latency by 30% for real-time performance."
-                  image="/images/virtual-handwriting.png"
-                  tags={["Python", "TensorFlow", "OpenCV", "CNNs"]}
-                />
-              </ScrollReveal>
-
-              <ScrollReveal>
-                <ProjectCard
-                  title="AI-Powered Data Assistant"
-                  description="Built a Streamlit app that analyzes user-uploaded CSVs and uses LLMs to auto-generate Python code for data cleaning, EDA, and model building with clear, step-by-step explanations."
-                  image="/images/ai-data-assistant.png"
-                  tags={["Streamlit", "OpenAI", "LangChain", "Ollama", "Pandas"]}
-                />
-              </ScrollReveal>
-
-              <ScrollReveal>
-                <ProjectCard
-                  title="Credit Card Fraud Detection"
-                  description="Developed ML solution for detecting fraudulent transactions in an imbalanced dataset. Improved model accuracy by 15% through data preprocessing and achieved an F1-Score of 0.92 with 20% reduction in false positives."
-                  image="/images/credit-card-fraud.png"
-                  tags={["Python", "Machine Learning", "Random Forest", "Neural Networks", "Snap ML"]}
-                />
-              </ScrollReveal>
-
-              <ScrollReveal>
-                <ProjectCard
-                  title="Socio-Economic Factors & Cancer Rates"
-                  description="Analyzed correlations between income, poverty, and cancer incidence/mortality in U.S. counties. Revealed regional disparities and suggested targeted interventions for high-risk areas."
-                  image="/images/socio-economic-cancer.png"
-                  tags={["Data Science", "Tableau", "R", "Statistical Analysis"]}
-                />
-              </ScrollReveal>
-
-              <ScrollReveal>
-                <ProjectCard
-                  title="Housing Data Analysis in Ames, Iowa"
-                  description="Analyzed 1,460 homes to identify factors affecting house prices using T-tests, ANOVA, and linear regression. Found significant price impacts from central air conditioning and neighborhood tiers."
-                  image="/images/housing-data-ames.png"
-                  tags={["Regression Analysis", "JMP", "ANOVA", "Hypothesis Testing"]}
-                />
-              </ScrollReveal>
-            </div>
-          </div>
-        </section>
-
         {/* Contact Section */}
         <section id="contact" className="pt-24 pb-20 md:pt-32 md:pb-28 bg-muted/30 backdrop-blur-sm">
           <div className="container">
@@ -757,7 +795,7 @@ export default function Home() {
                   I'm currently open to new opportunities and collaborations in data science and machine learning. Feel
                   free to reach out!
                 </p>
-                <Card className="overflow-hidden border-primary/20 hover:border-primary/50 transition-all duration-300 bg-background/50 backdrop-blur relative">
+                <Card className="overflow-hidden border-primary/20 hover:border-primary/50 transition-all duration-300 bg-background/50 backdrop-blur relative max-w-lg mx-auto">
                   <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-primary to-purple-500"></div>
                   <CardContent className="p-8">
                     <div className="grid gap-6">
@@ -819,6 +857,35 @@ export default function Home() {
                             </a>
                           </Button>
                           <span className="text-muted-foreground">linkedin.com/in/sairupajhade</span>
+                        </div>
+
+                        {/* Medium */}
+                        <div className="flex items-center gap-2">
+                          <Button
+                            variant="outline"
+                            size="icon"
+                            className="rounded-full hover:bg-primary/10 hover:text-primary transition-all duration-300"
+                            asChild
+                          >
+                            <a href="https://medium.com/@jsairupa" target="_blank" rel="noopener noreferrer">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="lucide lucide-book-open"
+                              >
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                              </svg>
+                            </a>
+                          </Button>
+                          <span className="text-muted-foreground">medium.com/@jsairupa</span>
                         </div>
 
                         {/* Phone */}
@@ -892,4 +959,3 @@ export default function Home() {
     </div>
   )
 }
-

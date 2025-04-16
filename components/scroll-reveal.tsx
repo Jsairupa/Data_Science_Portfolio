@@ -28,4 +28,3 @@ export function ScrollReveal({ children, className }: ScrollRevealProps) {
     </motion.div>
   )
 }
-

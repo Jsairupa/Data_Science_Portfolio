@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { Card, CardContent } from "@/components/ui/card"
+import type { ReactNode } from "react"
 
 interface TimelineItemProps {
   title: string
@@ -10,19 +11,20 @@ interface TimelineItemProps {
   period: string
   location: string
   description: string | string[]
+  icon: ReactNode
 }
 
-export function TimelineItem({ title, organization, period, location, description }: TimelineItemProps) {
+export function TimelineItem({ title, organization, period, location, description, icon }: TimelineItemProps) {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
 
   const variants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
-      x: 0,
+      y: 0,
       transition: {
         duration: 0.5,
         ease: "easeOut",
@@ -32,12 +34,15 @@ export function TimelineItem({ title, organization, period, location, descriptio
 
   return (
     <motion.div ref={ref} initial="hidden" animate={inView ? "visible" : "hidden"} variants={variants}>
-      <Card className="relative border-primary/20 hover:border-primary/50 transition-all duration-300">
+      <Card className="relative border-primary/20 hover:border-primary/50 transition-all duration-300 h-full">
         <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-primary to-purple-500"></div>
         <CardContent className="p-6">
-          <div className="mb-2">
-            <h4 className="text-lg font-bold">{title}</h4>
-            <p className="text-sm text-primary">{organization}</p>
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h4 className="text-lg font-bold">{title}</h4>
+              <p className="text-sm text-primary">{organization}</p>
+            </div>
+            <div className="flex-shrink-0 rounded-full p-2 bg-primary/10 text-primary">{icon}</div>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-1 mb-4 text-xs text-muted-foreground">
             <span className="flex items-center">
@@ -82,7 +87,7 @@ export function TimelineItem({ title, organization, period, location, descriptio
           {typeof description === "string" ? (
             <p className="text-sm text-muted-foreground">{description}</p>
           ) : (
-            <ul className="list-disc pl-5 space-y-2">
+            <ul className="list-disc pl-5 space-y-1.5">
               {description.map((item, index) => (
                 <li key={index} className="text-sm text-muted-foreground">
                   {item}
@@ -95,4 +100,3 @@ export function TimelineItem({ title, organization, period, location, descriptio
     </motion.div>
   )
 }
-

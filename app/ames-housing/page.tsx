@@ -69,4 +69,3 @@ export default function AmesHousingPage() {
     </div>
   )
 }
-

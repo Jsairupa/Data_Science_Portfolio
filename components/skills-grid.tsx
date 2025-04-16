@@ -93,4 +93,3 @@ function SkillCategory({ icon, title, skills }: SkillCategoryProps) {
     </motion.div>
   )
 }
-
