@@ -1,7 +1,0 @@
-{
-  "buildCommand": "pip install -r requirements.txt",
-  "installCommand": "pip install --upgrade pip",
-  "framework": null,
-  "outputDirectory": ".",
-  "devCommand": "streamlit run streamlit_app.py"
-}
