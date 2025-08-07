@@ -1,20 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
+  images: {
+    unoptimized: true,
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
-  images: {
-    domains: ['localhost', 'blob.v0.dev', 'sjc.microlink.io'],
-    unoptimized: true
-  },
-  experimental: {
-    appDir: true
-  },
-  swcMinify: true,
-  reactStrictMode: true
+  output: 'standalone',
 }
 
 module.exports = nextConfig
