@@ -23,6 +23,13 @@ export const knowledgeBase = {
     "Bachelor of Engineering in Computer Science from Amrita Vishwa Vidyapeetham (2019-2023)",
   ],
   experience: [
+    "Technical Operations Assistant at Rochester Institute of Technology (2024-Present)",
+    "Resolved 100+ technical support tickets related to data science tools and environments (Jupyter/Hub, Python, SQL, AWS, Azure), enhancing system uptime and tool accessibility for students and faculty",
+    "Automated helpdesk workflows using Python, reducing response time for common support requests by 40% and minimizing manual intervention",
+    "Analyzed support ticket metadata using SQL and Python to identify recurring issues, leading to a 25% drop in repeat incidents through targeted optimizations",
+    "Created internal dashboards to track system usage and recurring issues, enabling faster ticket resolution and better capacity planning",
+    "Collaborated with faculty and IT staff to test and troubleshoot new tool integrations, ensuring compatibility with course delivery and lab environments",
+    "Documented standard operating procedures (SOPs) for tool setup, user onboarding, and issue resolution, improving team efficiency and knowledge transfer",
     "Data Science Intern at Sree Rayalaseema Hi-Strength Hypo Ltd. (June 2022 – April 2023)",
     "Designed predictive sales models improving demand accuracy by 15%",
     "Developed BI dashboards reducing manual reporting by 30%",
@@ -151,15 +158,24 @@ export const projectResponses: Record<string, string[]> = {
 
 // Define topic-specific response functions for better organization
 const getExperienceResponse = (): string => {
-  return `Sai's professional experience includes working as a Data Science Intern at Sree Rayalaseema Hi-Strength Hypo Ltd. from June 2022 to April 2023. During this role, she:
+  return `Sai's professional experience includes:
 
-1. Designed and deployed predictive sales models using ARIMA, XGBoost, and Prophet, improving demand accuracy by 15% and optimizing supply chain forecasting to reduce stockouts.
+**Current Role:**
+Technical Operations Assistant at Rochester Institute of Technology (2024-Present)
+• Resolved 100+ technical support tickets related to data science tools and environments (Jupyter/Hub, Python, SQL, AWS, Azure), enhancing system uptime and tool accessibility for students and faculty
+• Automated helpdesk workflows using Python, reducing response time for common support requests by 40% and minimizing manual intervention
+• Analyzed support ticket metadata using SQL and Python to identify recurring issues, leading to a 25% drop in repeat incidents through targeted optimizations
+• Created internal dashboards to track system usage and recurring issues, enabling faster ticket resolution and better capacity planning
+• Collaborated with faculty and IT staff to test and troubleshoot new tool integrations, ensuring compatibility with course delivery and lab environments
+• Documented standard operating procedures (SOPs) for tool setup, user onboarding, and issue resolution, improving team efficiency and knowledge transfer
 
-2. Developed interactive business intelligence dashboards (Tableau, Power BI) to monitor real-time sales performance, cutting manual reporting by 30% and enabling faster decision-making.
+**Previous Experience:**
+Data Science Intern at Sree Rayalaseema Hi-Strength Hypo Ltd. (June 2022 – April 2023)
+• Designed and deployed predictive sales models using ARIMA, XGBoost, and Prophet, improving demand accuracy by 15% and optimizing supply chain forecasting to reduce stockouts
+• Developed interactive business intelligence dashboards (Tableau, Power BI) to monitor real-time sales performance, cutting manual reporting by 30% and enabling faster decision-making
+• Performed customer segmentation using K-Means clustering and DBSCAN, enabling targeted marketing campaigns, which boosted conversion rates by 20% and optimized pricing strategies, leading to a 5% increase in revenue
 
-3. Performed customer segmentation using K-Means clustering and DBSCAN, enabling targeted marketing campaigns, which boosted conversion rates by 20% and optimized pricing strategies, leading to a 5% increase in revenue.
-
-This experience has given her practical skills in applying data science techniques to real-world business problems.`
+This diverse experience has given her practical skills in both technical operations and data science applications to real-world business problems.`
 }
 
 const getEducationResponse = (): string => {

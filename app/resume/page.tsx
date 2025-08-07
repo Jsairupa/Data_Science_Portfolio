@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 
 export default function ResumePage() {
@@ -71,6 +71,9 @@ export default function ResumePage() {
                 <p className="italic">Bachelor of Engineering, Computer Science and Engineering, GPA: 8.23/10.0</p>
                 <span>Aug 2019 – May 2023</span>
               </div>
+              <p className="text-sm mt-1">
+                Courses: Computer Science Fundamentals, Data Structures & Algorithms, Machine Learning
+              </p>
             </div>
           </section>
 
@@ -101,26 +104,37 @@ export default function ResumePage() {
             <h2 className="text-xl font-bold border-b-2 border-gray-300 pb-1 mb-3">RELEVANT EXPERIENCE</h2>
             <div>
               <div className="flex justify-between">
-                <h3 className="font-bold">Sree Rayalaseema Hi-Strength Hypo Ltd. (SRHHL)</h3>
-                <span>Hyderabad, India</span>
+                <h3 className="font-bold">Rochester Institute of Technology - GCCIS</h3>
+                <span>Rochester, NY</span>
               </div>
               <div className="flex justify-between">
-                <p className="italic">Data Science Intern</p>
-                <span>June 2022 – April 2023</span>
+                <p className="italic">Technical Operations Assistant</p>
+                <span>July 2023 – Present</span>
               </div>
               <ul className="list-disc pl-5 mt-2 space-y-1">
                 <li>
-                  Designed and deployed predictive sales models using ARIMA, XGBoost, and Prophet, improving demand
-                  accuracy by 15% and optimizing supply chain forecasting to reduce stockouts.
+                  Resolved 100+ technical support tickets related to data science tools and environments (JupyterHub, Python, SQL,
+                  AWS, Azure), enhancing system uptime and tool accessibility for students and faculty.
                 </li>
                 <li>
-                  Developed interactive business intelligence dashboards (Tableau, Power BI) to monitor real-time sales
-                  performance, cutting manual reporting by 30% and enabling faster decision-making.
+                  Automated diagnostic workflows using Python, reducing response time for common support requests by 40% and
+                  minimizing manual intervention.
                 </li>
                 <li>
-                  Performed customer segmentation using K-Means clustering and DBSCAN, enabling targeted marketing
-                  campaigns, which boosted conversion rates by 20% and optimized pricing strategies, leading to a 5%
-                  increase in revenue.
+                  Analyzed support ticket metadata using SQL and Python to identify recurring issues, leading to a 25% drop in repeat
+                  incidents through targeted optimizations.
+                </li>
+                <li>
+                  Created internal dashboards to track system usage and recurring issues, enabling faster ticket resolution and better
+                  capacity planning.
+                </li>
+                <li>
+                  Collaborated with faculty and IT staff to test and troubleshoot new tool integrations, ensuring compatibility with
+                  course delivery and lab environments.
+                </li>
+                <li>
+                  Documented standard operating procedures (SOPs) for tool setup, user onboarding, and issue resolution, improving
+                  team efficiency and knowledge transfer.
                 </li>
               </ul>
             </div>

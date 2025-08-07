@@ -2,10 +2,10 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Eye, GraduationCap, Briefcase } from "lucide-react"
+import { ArrowRight, GraduationCap, Briefcase } from 'lucide-react'
 import { useEffect } from "react"
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X } from 'lucide-react'
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -273,16 +273,6 @@ export default function Home() {
                     View My Work <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-primary hover:bg-primary/10 transition-all duration-300"
-                  asChild
-                >
-                  <Link href="/resume" target="_blank">
-                    <Eye className="mr-2 h-4 w-4" /> View Resume
-                  </Link>
-                </Button>
               </div>
             </div>
           </div>
@@ -414,7 +404,7 @@ export default function Home() {
               organization="Amrita Vishwa Vidyapeetham"
               period="Aug 2019 – May 2023"
               location="Coimbatore, India"
-              description="GPA: 8.23/10.0. Focused on Computer Science Fundamentals, Data Structures & Algorithms and Machine Learning."
+              description="GPA: 8.23/10.0. Courses: Computer Science Fundamentals, Data Structures & Algorithms and Machine Learning."
               icon={<GraduationCap size={18} />}
             />
           </ScrollReveal>
@@ -429,28 +419,34 @@ export default function Home() {
         >
           <ScrollReveal>
             <TimelineItem
-              title="Data Science Intern"
-              organization="Sree Rayalaseema Hi-Strength Hypo Ltd. (SRHHL)"
-              period="June 2022 – April 2023"
-              location="Hyderabad, India"
+              title="Technical Operations Assistant"
+              organization="Rochester Institute of Technology - GCCIS"
+              period="July 2023 – Present"
+              location="Rochester, NY"
               description={[
-                "Designed and deployed predictive sales models using ARIMA, XGBoost, and Prophet, improving demand accuracy by 15% and optimizing supply chain forecasting to reduce stockouts.",
-                "Developed interactive business intelligence dashboards (Tableau, Power BI) to monitor real-time sales performance, cutting manual reporting by 30% and enabling faster decision-making.",
-                "Performed customer segmentation using K-Means clustering and DBSCAN, enabling targeted marketing campaigns, which boosted conversion rates by 20% and optimized pricing strategies, leading to a 5% increase in revenue.",
+                "Resolved 100+ technical support tickets related to data science tools and environments (JupyterHub, Python, SQL, AWS, Azure), enhancing system uptime and tool accessibility for students and faculty.",
+                "Automated diagnostic workflows using Python, reducing response time for common support requests by 40% and minimizing manual intervention.",
+                "Analyzed support ticket metadata using SQL and Python to identify recurring issues, leading to a 25% drop in repeat incidents through targeted optimizations.",
+                "Created internal dashboards to track system usage and recurring issues, enabling faster ticket resolution and better capacity planning.",
+                "Collaborated with faculty and IT staff to test and troubleshoot new tool integrations, ensuring compatibility with course delivery and lab environments.",
+                "Documented standard operating procedures (SOPs) for tool setup, user onboarding, and issue resolution, improving team efficiency and knowledge transfer."
               ]}
               icon={<Briefcase size={18} />}
             />
           </ScrollReveal>
           <ScrollReveal>
             <TimelineItem
-              title="Technical Operations Assistant"
-              organization="Rochester Institute of Technology"
-              period="May 2024 – Present"
-              location="Rochester, NY"
+              title="Junior Data Scientist"
+              organization="Sree Rayalaseema Hi-Strength Hypo Ltd. (SRHHL)"
+              period="June 2022 – April 2023"
+              location="Hyderabad, India"
               description={[
-                "Delivered technical support for over 100 campus-wide IT systems, resolving hardware, software, and network issues with a 95% success rate, ensuring smooth operations.",
-                "Facilitated the deployment and configuration of 10+ software applications, improving system performance by 20% and reducing response time by 15%.",
-                "Collaborated with faculty, staff to address technical issues, managing hardware and software configurations to reduce resolution time by 45% and improve user satisfaction and operational uptime.",
+                "Developed and deployed forecasting models (ARIMA, XGBoost, Facebook Prophet) to predict chemical product demand, improving forecast accuracy by 15% and minimizing supply chain disruptions.",
+                "Engineered and validated automated data pipelines in Python and SQL to clean and preprocess sales and inventory data, reducing manual reporting errors by 35%.",
+                "Performed unsupervised customer segmentation using K-Means and DBSCAN, identifying high-value customer cohorts and enabling a 20% increase in targeted campaign conversions.",
+                "Built interactive dashboards to visualize inventory flow, demand spikes, and customer clusters, reducing reporting effort by 30%.",
+                "Extracted insights from 100K+ transaction records using advanced SQL (Window Functions, CTEs), supporting anomaly detection and strategic planning.",
+                "Collaborated with cross-functional teams to translate raw data into actionable insights, contributing to a 5% increase in quarterly revenue."
               ]}
               icon={<Briefcase size={18} />}
             />
@@ -644,62 +640,6 @@ export default function Home() {
                     </p>
                     <a
                       href="https://www.coursera.org/account/accomplishments/specialization/O0AZE98CQZHG"
-                      className="text-primary flex items-center hover:underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View Certificate
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="ml-1"
-                      >
-                        <path d="M7 17L17 7"></path>
-                        <path d="M7 7h10v10"></path>
-                      </svg>
-                    </a>
-                  </CardContent>
-                </Card>
-              </ScrollReveal>
-
-              <ScrollReveal>
-                <Card className="relative border-primary/20 hover:border-primary/50 transition-all duration-300 h-full">
-                  <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-primary to-purple-500"></div>
-                  <CardContent className="p-6">
-                    <div className="mb-6">
-                      <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="text-primary"
-                        >
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="2" y1="12" x2="22" y2="12"></line>
-                          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                        </svg>
-                      </div>
-                      <h3 className="text-xl font-bold">Generative AI Course with Langchain and Huggingface</h3>
-                    </div>
-                    <p className="text-muted-foreground mb-6">
-                      Advanced course on building generative AI applications using Langchain and Huggingface
-                      transformers.
-                    </p>
-                    <a
-                      href="https://www.udemy.com/certificate/UC-b73234ce-40f2-40c8-a4fa-92dc9836b0fd/"
                       className="text-primary flex items-center hover:underline"
                       target="_blank"
                       rel="noopener noreferrer"
