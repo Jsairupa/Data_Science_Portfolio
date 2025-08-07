@@ -12,8 +12,10 @@
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
     "@radix-ui/react-avatar": "latest",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "latest",
     "@radix-ui/react-slider": "latest",
+    "@radix-ui/react-slot": "latest",
     "@radix-ui/react-switch": "latest",
     "@radix-ui/react-tabs": "latest",
     "@radix-ui/react-toggle": "latest",
@@ -22,9 +24,9 @@
     "framer-motion": "latest",
     "gsap": "latest",
     "lucide-react": "^0.454.0",
-    "next": "15.2.4",
-    "react": "^19",
-    "react-dom": "^19",
+    "next": "14.2.16",
+    "react": "^18",
+    "react-dom": "^18",
     "react-intersection-observer": "latest",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
@@ -32,17 +34,18 @@
   },
   "devDependencies": {
     "@types/node": "^22",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@types/three": "^0.156.0",
-    "autoprefixer": "^10",
-    "eslint": "^8",
-    "eslint-config-next": "13.5.4",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "14.0.0",
     "postcss": "^8.5",
-    "tailwindcss": "^3",
+    "tailwindcss": "^3.3.5",
     "typescript": "^5"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   }
 }

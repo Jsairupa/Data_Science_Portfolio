@@ -7,12 +7,14 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'blob.v0.dev', 'sjc.microlink.io'],
     unoptimized: true
   },
   experimental: {
     appDir: true
-  }
+  },
+  swcMinify: true,
+  reactStrictMode: true
 }
 
 module.exports = nextConfig
