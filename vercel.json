@@ -1,13 +1,10 @@
 {
-  "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
-  "installCommand": "npm install",
   "framework": "nextjs",
   "functions": {
-    "app/**/*.{js,ts,tsx}": {
-      "maxDuration": 30
+    "app/**/*.tsx": {
+      "runtime": "nodejs18.x"
     }
-  },
-  "regions": ["iad1"]
+  }
 }
